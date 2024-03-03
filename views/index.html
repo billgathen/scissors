@@ -1,0 +1,18 @@
+<% layout('/_layout.html') %>
+
+<div><img src="/images/sergey-semin-Y0WXj3xqJz0-unsplash-200x200.jpg" height="200" width="200" alt="Cute Kitten"></div>
+<div><a href="/foo">??? bar baz</a></div>
+<div><a href="/hello.html">Say hello!</a></div>
+<div><a href="/broken.html">Click to break stuff</a></div>
+<div><a href="/not-found.html">Not Found</a></div>
+<div><button hx-get="/response.html" hx-swap="afterend">Click me</button></div>
+<div><a href="https://eta.js.org/docs/intro/syntax-cheatsheet" target="_blank" rel="noopener noreferrer">ETA syntax cheat-sheet</a></div>
+<div class="stack">
+  <h2>Super Folks</h2>
+  <% Object.keys(it.people).forEach((name) => { %>
+    <div>
+      <button hx-get="/person.html?name=<%= name %>" hx-target="#person"><%= name %></button>
+    </div>
+  <% }) %>
+  <div id="person"></div>
+</div>
