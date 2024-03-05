@@ -4,7 +4,7 @@ interface Person {
   powers: string;
 }
 
-export const people = {
+export const people: Record<string, Person> = {
   "Ben": { fullName: "Ben Grimm", nickname: "The Thing", powers: "super strength, rock-hard skin" },
   "Johnny": { fullName: "Johnny Storm", nickname: "Human Torch", powers: "flying, flames" },
   "Reed": { fullName: "Reed Richards", nickname: "Mr. Fantastic", powers: "stretchy" },
