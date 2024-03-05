@@ -5,8 +5,14 @@
 <div><a href="/hello.html">Say hello!</a></div>
 <div><a href="/broken.html">Click to break stuff</a></div>
 <div><a href="/not-found.html">Not Found</a></div>
-<div><button hx-get="/response.html" hx-swap="afterend">Click me</button></div>
+<div><button hx-get="/response.html" hx-target="closest div" hx-swap="beforeend">Click me</button></div>
 <div><a href="https://eta.js.org/docs/intro/syntax-cheatsheet" target="_blank" rel="noopener noreferrer">ETA syntax cheat-sheet</a></div>
+<div class="stack">
+  <h2>Foods</h2>
+  <% it.foods.forEach((food) => { %>
+    <div><%= food %></div>
+  <% }) %>
+</div>
 <div class="stack">
   <h2>Super Folks</h2>
   <% Object.keys(it.people).forEach((name) => { %>

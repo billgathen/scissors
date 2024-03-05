@@ -1,25 +1,11 @@
 import { Eta } from "https://deno.land/x/eta@v3.2.0/src/index.ts"
-import { data } from "./data/data.ts";
+import { people, foods } from "./data/data.ts";
+import { contentTypes } from "./config.ts";
 
 const viewPath = Deno.cwd() + "/views";
 const eta = new Eta({ views: viewPath, cache: false }) // set cache to true for production
 
-const contentTypes: { [key: string]: string } = {
-  html: "text/html",
-  css: "text/css",
-  js: "text/javascript",
-  jpg: "image/jpeg",
-  jpeg: "image/jpeg",
-  png: "image/png",
-  gif: "image/gif",
-  svg: "image/svg+xml",
-  ico: "image/x-icon",
-  json: "application/json",
-  plain: "text/plain",
-  "": "text/plain",
-};
-
-const systemData = { people: data.people};
+const systemData = { people: people, foods: foods };
 
 const handler = async (request: Request): Promise<Response> => {
   const url = new URL(request.url);
