@@ -1,5 +1,5 @@
 import { Eta } from "https://deno.land/x/eta@v3.2.0/src/index.ts"
-import { data } from "./data.ts";
+import { data } from "./data/data.ts";
 
 const viewPath = Deno.cwd() + "/views";
 const eta = new Eta({ views: viewPath, cache: false }) // set cache to true for production
