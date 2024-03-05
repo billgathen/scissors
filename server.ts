@@ -37,7 +37,7 @@ const handler = async (request: Request): Promise<Response> => {
     return new Response(res, { status: 200, headers: { "Content-Type": contentType } });
   } catch (err) {
     if (err instanceof Deno.errors.NotFound || err.message.includes("Could not find")) {
-      return new Response(await Deno.readFile('./404.html'), { status: 404, headers: { "Content-Type": "text/html" } });
+      return new Response(await Deno.readFile('./views/404.html'), { status: 404, headers: { "Content-Type": "text/html" } });
     }
     return new Response(`ERROR: ${err.message}`, { status: 500, headers: { "Content-Type": "text/plain" } });
   }
