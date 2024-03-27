@@ -5,7 +5,11 @@
 <div><a href="/hello.html">Say hello!</a></div>
 <div><a href="/broken.html">Click to break stuff</a></div>
 <div><a href="/not-found.html">Not Found</a></div>
-<div><button hx-get="/response.html" hx-target="closest div" hx-swap="beforeend">Click me</button></div>
+<div>
+  <append-content aria-live="polite" data-src="/response.html">
+    <button>Click to load more content</button>
+  </append-content>
+</div>
 <div><a href="https://eta.js.org/docs/intro/syntax-cheatsheet" target="_blank" rel="noopener noreferrer">ETA syntax cheat-sheet</a></div>
 <div class="stack">
   <h2>Foods</h2>
@@ -15,10 +19,16 @@
 </div>
 <div class="stack">
   <h2>Super Folks</h2>
-  <% Object.keys(it.people).forEach((name) => { %>
-    <div>
-      <button hx-get="/person.html?name=<%= name %>" hx-target="#person"><%= name %></button>
-    </div>
-  <% }) %>
-  <div id="person"></div>
+  <ul>
+    <% Object.keys(it.people).forEach((name) => { %>
+    <li>
+      <replace-content data-src="/person.html?name=<%= name %>" data-target="#person">
+        <button><%= name %></button>
+      </replace-content>
+    </li>
+    <% }) %>
+  </ul>
+  <!-- aria-live makes screen readers announce changed content (on an element-by-element basis) -->
+  <!-- TODO labels aren't announced on subsequent selections, since they don't change: resolve that -->
+  <div aria-live="polite" id="person"></div>
 </div>
