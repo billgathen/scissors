@@ -1,25 +1,45 @@
 <% layout('/_layout.html') %>
 
+<h1 aria-label="Scissors">SciSsoRs</h1>
+<p>A demo page for the server. Check the README for more details.</p>
+
+<h2>Static Content</h2>
 <div><img src="/images/sergey-semin-Y0WXj3xqJz0-unsplash-200x200.jpg" height="200" width="200" alt="Cute Kitten"></div>
 <div><a href="/data/data.json">Get data</a></div>
 <div><a href="/hello.html">Say hello!</a></div>
 <div><a href="/broken.html">Click to break stuff</a></div>
 <div><a href="/not-found.html">Not Found</a></div>
+<div><a href="https://eta.js.org/docs/intro/syntax-cheatsheet">ETA syntax cheat-sheet</a></div>
+
+<h2>Dynamic Content</h2>
+
+<h3>Append</h3>
 <div>
   <append-content aria-live="polite" data-src="/response.html">
     <button>Click to load more content</button>
   </append-content>
 </div>
-<div><a href="https://eta.js.org/docs/intro/syntax-cheatsheet" target="_blank" rel="noopener noreferrer">ETA syntax cheat-sheet</a></div>
-<div class="stack">
-  <h2>Foods</h2>
-  <% it.foods.forEach((food) => { %>
-    <div><%= food %></div>
-  <% }) %>
+
+<h3>Select</h3>
+<div>
+  <label class="row">
+    <h4>Foods</h4>
+    <select-content data-src="/food-category.html" data-target="#foods">
+      <select name="food-category">
+        <option></option>
+        <% Object.keys(it.foods).forEach((name) => { %>
+          <option><%= name %></option>
+        <% }) %>
+      </select>
+    </select-content>
+  </label>
 </div>
-<div class="stack">
-  <h2>Super Folks</h2>
-  <ul>
+<div aria-live="polite" id="foods" class="stack"></div>
+
+<h3>Replace</h3>
+<div class="row">
+  <h4>Super Folks</h4>
+  <ul class="row">
     <% Object.keys(it.people).forEach((name) => { %>
     <li>
       <replace-content data-src="/person.html?name=<%= name %>" data-target="#person">
@@ -30,5 +50,5 @@
   </ul>
   <!-- aria-live makes screen readers announce changed content (on an element-by-element basis) -->
   <!-- TODO labels aren't announced on subsequent selections, since they don't change: resolve that -->
-  <div aria-live="polite" id="person"></div>
 </div>
+<div aria-live="polite" id="person"></div>

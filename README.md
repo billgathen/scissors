@@ -1,7 +1,7 @@
-# SciSsoRs
+# SciSsoRs (pronounced "scissors")
 ...is a Deno-powered, filesystem-based, single-dependency SSR (Server-Side Rendering) server that uses Web Components for interactivity. It's not intended as a production system, but a demo of how simply we can assemble these features using a minimal, modern toolset. The name SciSsoRs is an expansion of the SSR acronym, and echoes the UNIX design philosophy of small, sharp tools. :-)
 
-SciSsoRs uses [Deno](https://docs.deno.com/runtime/manual), which allows a Deno-style import of the Eta templating engine, avoiding NPM and the dreaded node_modules folder, as well as package.json/package-lock.json, etc.
+SciSsoRs uses [Deno](https://docs.deno.com/runtime/manual), which allows a Deno-style import of the Eta templating engine, avoiding NPM and the dreaded node_modules folder, as well as package.json/package-lock.json, etc. Deno also runs [TypeScript](https://www.typescriptlang.org/) natively, without a build step.
 
 [Eta](https://eta.js.org) handles the dynamic aspects of the SSR process, allowing arbitrary JS to be included directly in the HTML file, as well as supporting layouts to reduce boilerplate. Any .html file in the /views hierarchy will be processed by Eta before serving plain HTML to the client.
 

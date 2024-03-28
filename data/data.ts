@@ -11,4 +11,8 @@ export const people: Record<string, Person> = {
   "Sue": { fullName: "Sue Storm", nickname: "The Invisible Woman", powers: "invisibility, force fields" },
 }
 
-export const foods = [ "apples", "bananas", "carrots", "dates" ]
+export const foods: Record<string, string[]> = {
+  "Fruits": [ "apples", "bananas", "dates" ],
+  "Vegetables": [ "carrots", "broccoli", "brussel sprouts", "kale" ],
+  "Meats": [ "beef", "pork", "chicken" ]
+}

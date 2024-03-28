@@ -38,3 +38,25 @@ class ReplaceContent extends HTMLElement {
 }
 
 customElements.define('replace-content', ReplaceContent)
+
+class SelectContent extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    const target = document.querySelector(this.dataset.target);
+    this.querySelector('select').addEventListener('change', (e) => {
+      if (e.target.value) {
+        const url = `${this.dataset.src}?${e.target.name}=${e.target.value}`;
+        fetch(url).
+          then((response) => response.text()).
+          then((text) => target.innerHTML = text);
+      } else {
+        target.innerHTML = "";
+      }
+    })
+  }
+}
+
+customElements.define('select-content', SelectContent)
